@@ -1,0 +1,43 @@
+<div class="boletas-container">
+    <h2>Mis Boletas</h2>
+
+    <!-- Loading -->
+    <div class="loading" *ngIf="loading()">
+        <p>Cargando boletas...</p>
+    </div>
+
+    <!-- Error -->
+    <div class="alert alert-error" *ngIf="errorMessage()">
+        {{ errorMessage() }}
+    </div>
+
+    <!-- Sin boletas -->
+    <div class="empty-state" *ngIf="!loading() && boletas().length === 0 && !errorMessage()">
+        <p>No tienes boletas registradas</p>
+    </div>
+
+    <!-- Lista de boletas -->
+    <div class="boletas-list" *ngIf="!loading() && boletas().length > 0">
+        <div class="boleta-card" *ngFor="let boleta of boletas()" (click)="verDetalle(boleta.idBoleta)">
+            <div class="boleta-header">
+                <h3>Boleta #{{ boleta.idBoleta }}</h3>
+                <span class="boleta-fecha">
+                    {{ boletaService.formatearFecha(boleta.fecha_creacion) }}
+                </span>
+            </div>
+            <div class="boleta-body">
+                <div class="boleta-total">
+                    <span>Total:</span>
+                    <strong>{{ boletaService.formatearPrecio(boleta.total) }}</strong>
+                </div>
+            </div>
+            <div class="boleta-footer">
+                <button (click)="verDetalles(boleta.idBoleta)" class="btn-detail">Ver Detalles →</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal-boleta
+    [boletaId]="selectedBoletaId()"
+    (closeModal)="selectedBoletaId.set(null)">
+</app-modal-boleta>

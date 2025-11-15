@@ -1,0 +1,108 @@
+<style>
+    /* Estilos para el fondo del hero section */
+    .hero-section {
+        /* Gradiente de fondo más vivo y dinámico */
+        background: linear-gradient(135deg, #4CAF50 0%, #2196F3 100%);
+        color: white;
+        padding: 100px 0;
+        /* Más padding para que se vea más grande */
+        /* Sombra sutil para darle profundidad */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        /* Animación al cargar */
+        animation: fadeIn 1.5s ease-out;
+    }
+
+    /* Definición de la animación de aparición */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Efecto hover para los botones */
+    .btn-custom-light {
+        transition: all 0.3s ease;
+        /* Transición suave */
+        /* Botón de inicio más llamativo */
+        border-radius: 50px;
+    }
+
+    .btn-custom-light:hover {
+        transform: translateY(-3px);
+        /* Pequeño levantamiento */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        /* Sombra al pasar el mouse */
+    }
+
+    .btn-outline-light-custom {
+        transition: all 0.3s ease;
+        border-radius: 50px;
+    }
+
+    .btn-outline-light-custom:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        /* Fondo sutil al pasar el mouse */
+        transform: scale(1.05);
+        /* Ligeramente más grande */
+    }
+
+    /* Estilo para el título principal */
+    .display-4 {
+        font-weight: 700 !important;
+        /* Más negrita para el título */
+        letter-spacing: 1px;
+    }
+
+    /* Icono decorativo (opcional, simulación con texto) */
+    .icon-text {
+        font-size: 3rem;
+        margin-bottom: 15px;
+        display: inline-block;
+        animation: bounce 2s infinite;
+        /* Animación de rebote sutil */
+    }
+
+    @keyframes bounce {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+
+        40% {
+            transform: translateY(-10px);
+        }
+
+        60% {
+            transform: translateY(-5px);
+        }
+    }
+</style>
+
+<body>
+
+    <section class="hero-section text-center">
+        <div class="container py-5">
+            <div class="icon-text">🚀</div>
+            <h1 class="display-4 fw-bold mb-3">Sistema de Facturación Electrónica y Punto de Venta</h1>
+            <p class="lead mb-5 fs-4">Gestiona tu negocio con nuestra plataforma fácil, rápida y segura. ¡Optimiza tus
+                ventas hoy mismo!</p>
+            <div class="d-flex justify-content-center gap-4 flex-wrap">
+                <button (click)="irARegistro()" class="btn btn-light btn-lg text-primary fw-bold btn-custom-light">
+                    <i class="bi bi-box-arrow-in-right me-2"></i> Comienza ahora gratis
+                </button>
+
+
+
+            </div>
+        </div>
+    </section>

@@ -1,0 +1,70 @@
+$color-icono-1: #4CAF50;
+$color-icono-2: #FFEB3B;
+$color-icono-3: #FF5722;
+$color-icono-4: #2196F3;
+
+
+/* Fondo para contrastar con las secciones anteriores (un gris oscuro o azul muy oscuro) */
+.pos-benefits-section {
+    background-color: #1a237e;
+    /* Azul profundo (Deep Indigo) */
+    color: white;
+    padding: 80px 0;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2);
+    /* Sombra interna sutil */
+}
+
+/* Estilo de la tarjeta, ahora con fondo transparente y borde resaltado */
+.benefit-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Fondo muy ligeramente transparente */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borde blanco sutil */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    height: 100%;
+    /* Asegura que todas tengan la misma altura */
+}
+
+.benefit-card:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    /* Se ilumina al pasar el mouse */
+    transform: translateY(-5px);
+    /* Se levanta sutilmente */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    /* Sombra oscura */
+}
+
+/* Estilo para los íconos de énfasis */
+.benefit-icon{
+    font-size: 3rem;
+
+    /* Un color de acento brillante (Verde) */
+    margin-bottom: 15px;
+    /* Animación de giro sutil al pasar el mouse */
+    transition: transform 0.5s ease;
+}
+
+.icon-1 {    
+    color: $color-icono-1;
+}
+
+.icon-2 {    
+    color: $color-icono-2;
+}
+
+.icon-3 {    
+    color: $color-icono-3;
+}
+
+.icon-4{    
+    color: $color-icono-4;
+}
+
+.benefit-card:hover .benefit-icon {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.main-title {
+    font-weight: 700 !important;
+}

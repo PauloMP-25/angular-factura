@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="container" id="container" [class.right-panel-active]="isRightPanelActive">
+
+        <div class="form-container sign-up-container">
+            <app-registro></app-registro>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <app-login></app-login>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h2>¡Bienvenido de nuevo!</h2>
+                    <p>¿Ya tienes cuenta?</p>
+                    <button class="btn btn-outline-light mt-3" (click)="showSignIn()">Iniciar sesión</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h2>¡Hola!</h2>
+                    <p>¿Aún no tienes cuenta?</p>
+                    <button class="btn btn-outline-light mt-3" (click)="showSignUp()">Registrarse</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

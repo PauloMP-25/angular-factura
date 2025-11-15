@@ -1,0 +1,19 @@
+<div class="bg-white p-4 rounded shadow-sm">
+    <nav class="nav flex-column">
+        <a routerLink="tabla-boletas" routerLinkActive="active"
+            class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded text-secondary">
+            <span class="material-symbols-outlined">ballot</span>
+            <span class="small fw-semibold">LISTA DE BOLETAS</span>
+        </a>
+        <a routerLink="formulario-boletas" routerLinkActive="active"
+            class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded text-secondary">
+            <span class="material-symbols-outlined">assignment_add</span>
+            <span class="small fw-medium">NUEVA BOLETA</span>
+        </a>
+        <hr />
+        <a (click)="cerrarSesion()" class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded">
+            <span class="material-symbols-outlined">logout</span>
+            <span class="small fw-medium">Cerrar Sesión</span>
+        </a>
+    </nav>
+</div>
