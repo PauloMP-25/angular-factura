@@ -1,0 +1,38 @@
+<form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()" novalidate>
+    <h2 class="fw-bold text-success mb-4">Iniciar sesión</h2>
+
+    <div class="alert alert-danger small py-2 mb-3" *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
+    <div class="alert alert-success small py-2 mb-3" *ngIf="successMessage">
+        {{ successMessage }}
+    </div>
+
+    <div class="mb-3">
+        <input type="email" placeholder="Correo electrónico" formControlName="usuarioLogin" required email
+            class="form-control" />
+
+        <div class="text-danger small mt-1"
+            *ngIf="loginForm.get('usuarioLogin')?.invalid && loginForm.get('usuarioLogin')?.touched">
+            <div *ngIf="loginForm.get('usuarioLogin')?.errors?.['required']">El correo es requerido</div>
+            <div *ngIf="loginForm.get('usuarioLogin')?.errors?.['email']">Debe ingresar un correo válido</div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <input type="password" placeholder="Contraseña" formControlName="passwordLogin" required minlength="6"
+            class="form-control" />
+
+        <div class="text-danger small mt-1"
+            *ngIf="loginForm.get('passwordLogin')?.invalid && loginForm.get('passwordLogin')?.touched">
+            <div *ngIf="loginForm.get('passwordLogin')?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="loginForm.get('passwordLogin')?.errors?.['minlength']">
+                La contraseña debe tener mínimo 6 caracteres
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-success mt-3 w-100" type="submit" [disabled]="cargandoLogin">
+        {{ cargandoLogin ? 'Entrando...' : 'Entrar' }}
+    </button>
+</form>

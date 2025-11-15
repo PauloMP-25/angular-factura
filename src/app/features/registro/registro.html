@@ -1,0 +1,78 @@
+<form [formGroup]="registroForm" (ngSubmit)="registrar()" novalidate>
+    <h2 class="fw-bold text-primary mb-4">Crear cuenta</h2>
+
+    <div class="alert alert-danger small py-2 mb-3" *ngIf="errorMessage">
+        {{ errorMessage }}
+    </div>
+    <div class="alert alert-success small py-2 mb-3" *ngIf="successMessage">
+        {{ successMessage }}
+    </div>
+
+    <div class="mb-3 w-100">
+        <div class="input-group">
+            <input type="text" placeholder="DNI" formControlName="dni" required minlength="8" maxlength="8"
+                class="form-control" [disabled]="cargando || cargandoRegistro" /> 
+
+            <button type="button" class="btn btn-secondary" (click)="buscarDni()"
+                [disabled]="cargando || cargandoRegistro || registroForm.get('dni')?.value?.length !== 8">
+                {{ cargando ? 'Buscando...' : 'Buscar' }} 
+            </button>
+        </div>
+        <div class="text-danger small mt-1"
+            *ngIf="registroForm.get('dni')?.invalid && registroForm.get('dni')?.touched">
+            <div *ngIf="registroForm.get('dni')?.errors?.['required']">El DNI es requerido</div>
+            <div
+                *ngIf="registroForm.get('dni')?.errors?.['minlength'] || registroForm.get('dni')?.errors?.['maxlength']">
+                El DNI debe tener 8 dígitos 
+            </div>
+        </div>
+    </div>
+
+    <input type="text" placeholder="Nombres" formControlName="nombres" class="form-control mb-2" readonly />
+    <input type="text" placeholder="Apellido Paterno" formControlName="apellidoPaterno" class="form-control mb-2"
+        readonly />
+    <input type="text" placeholder="Apellido Materno" formControlName="apellidoMaterno" class="form-control mb-2"
+        readonly />
+
+    <div class="mb-3 w-100">
+        <input type="email" placeholder="Correo electrónico" formControlName="correo" class="form-control"
+            [disabled]="cargandoRegistro" />
+        <div class="text-danger small mt-1"
+            *ngIf="registroForm.get('correo')?.invalid && registroForm.get('correo')?.touched">
+            <div *ngIf="registroForm.get('correo')?.errors?.['required']">El correo es requerido</div>
+            <div *ngIf="registroForm.get('correo')?.errors?.['email']">Debe ingresar un correo válido</div>
+
+            <div *ngIf="registroForm.get('correo')?.errors?.['emailNoDisponible']">
+                El email ya está registrado o no está disponible.
+            </div>
+
+            <div *ngIf="registroForm.get('correo')?.pending">
+                Verificando email...
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3 w-100">
+        <label for="passwordField" class="form-label visually-hidden">Contraseña</label>
+        <div class="input-group">
+            <input [type]="passwordVisible ? 'text' : 'password'" placeholder="Contraseña" formControlName="password"
+                class="form-control" id="passwordField" [disabled]="cargandoRegistro" />
+            <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                <i class="fas" [ngClass]="{'fa-eye': !passwordVisible, 'fa-eye-slash': passwordVisible}"></i>
+                {{ passwordVisible ? 'Ocultar' : 'Mostrar' }} 
+            </button>
+        </div>
+
+        <div class="text-danger small mt-1"
+            *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
+            <div *ngIf="registroForm.get('password')?.errors?.['required']">La contraseña es requerida</div>
+            <div *ngIf="registroForm.get('password')?.errors?.['minlength']">
+                La contraseña debe tener mínimo 6 caracteres 
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-3 w-100" type="submit" [disabled]="cargandoRegistro">
+        {{ cargandoRegistro ? 'Registrando...' : 'Registrarse' }}
+    </button>
+</form>
